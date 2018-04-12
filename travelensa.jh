@@ -1,0 +1,259 @@
+/*travelensa*/
+
+/* UserInfo */
+entity UserInfo {
+    id Long,
+	fullname String,
+    birthdate String,
+	phoneNumber String,
+    status StatusUser,
+    balance Double,
+    imgurl String,
+    gmailToken TextBlob,
+    facebookToken TextBlob
+}
+
+/* Country */
+entity Country{
+	id Long,
+    name String
+}
+
+/* City */
+entity City{
+	id Long,
+    name String
+}
+
+/* Relation Country */
+relationship OneToMany{
+	Country to City{country}
+}
+
+/* Relation UserInfo */
+relationship OneToOne{
+	UserInfo{user} to User{userInfo}
+}
+
+/* Journey */
+entity Journey{
+	id Long
+}
+
+/* Trip */
+entity Trip {
+   id Long,
+   startDate Instant,
+   endDate Instant
+}
+
+/* Relation Journey */
+relationship OneToMany{
+	Trip to Journey{trip},
+	City to Journey{city},
+	Country to Journey{country}
+}
+
+/* Relation Trip */
+relationship ManyToOne{
+	Trip{user} to User
+}
+
+/* ProductImage */
+entity ProductImage{
+	id Long,
+    imgUrl String
+}
+
+/* Category */
+entity Category {
+	id Long,
+	name String
+}
+
+/* Currency */
+entity Currency {
+	id Long,
+	name String,
+	value String
+}
+
+/* Product */
+entity Product{
+	id Long,
+    product_name String,
+    description TextBlob,
+    brand String,
+    url String,
+    quantity String,
+    spesial_treatment Boolean,
+    fragile Boolean,
+    product_weight Long,
+    product_size Size,
+    product_price Double,
+    pruduct_tip Double,
+    additional_charge Double,
+    total Double
+}
+
+/* Relation ProductImage, Product*/
+relationship OneToMany{
+	Product to ProductImage{product},
+	Category to Product{category},
+	City to Product{city},
+	Country to Product{country},
+	Currency to Product{currency}
+}
+
+/* Relation User*/
+relationship ManyToOne{
+    Product{user} to User
+}
+
+/* Offer */
+entity Offer{
+	id Long,
+	offerDate Instant,
+	price Double,
+	note String,
+	status StatusOffer
+}
+
+/* Request */
+entity Request {
+    id Long,
+    requestDate Instant,
+	viewed Long,
+	status Status,
+	traveler_id Long
+}
+
+/* PreOrder */
+entity PreOrder{
+	id Long,
+	orderDate Instant,
+	status Status
+}
+
+/* Transaction */
+entity Transaction{
+	id Long,
+	request_id Long,
+	preorder_id Long,
+	delivery_to TextBlob,
+	qty Long,
+	price Double
+}
+
+/* Relation Offer, Request, PreOrder, Transaction */
+relationship OneToMany{
+	Request to Offer{request},
+	Trip to Offer{trip},
+	Product to Request{product},
+	Product to PreOrder{product},
+	Trip to PreOrder{trip},
+	Currency to Transaction{currency}
+}
+
+/* Relation User*/
+relationship ManyToOne{
+	Offer{user} to User,
+	Request{user} to User,
+	PreOrder{user} to User
+}
+
+/* Notification */
+entity Notification {
+    id Long,
+    text TextBlob,
+    notifDate Instant
+}
+
+/* Discussion */
+entity Discussion {
+    id Long,
+    text TextBlob,
+    postDate Instant,
+    request_id Long,
+    preorder_id Long
+}
+
+/* Relation Notification, Discussion */
+relationship OneToMany{
+	Request to Notification{request}
+}
+
+/* Relation User */
+relationship ManyToOne{
+   Notification{user} to User,
+   Discussion{user} to User
+}
+
+/* Inbox */
+entity Inbox {
+    id Long,
+    subject TextBlob,
+    postDate Instant
+}
+
+/* Messages */
+entity Messages {
+	id Long,
+    text TextBlob,
+    postDate Instant
+}
+
+/* Relation Inbox, Messages */
+relationship OneToMany{
+    Inbox to Messages{inbox}
+}
+
+/* Relation User */
+relationship ManyToOne{
+    Inbox{sender} to User, //Sender inbox message
+    Inbox{receiver} to User, //Receiver inbox message
+    Messages{user} to User
+}
+
+/* Favorite */
+entity Favorite{
+	id Long,
+	request_id Long,
+    preorder_id Long
+}
+
+/* Relation User */
+relationship ManyToOne{
+    Favorite{user} to User
+}
+
+/* Slide */
+entity Slide{
+	id Long,
+    img_url Long,
+    url String
+}
+
+enum Size {
+	SMALL, MEDIUM, BIG
+}
+enum Status {
+	OPEN, REQUSTED, OFFERED, ACCEPTED, PAID, COMPLETED, CLOSE, COMPLAINED
+}
+
+enum StatusUser{
+	NOT, VERIFIED
+}
+enum StatusOffer {
+	OFFERED , CANCEL , ACCEPTED
+}
+
+// Set pagination options
+paginate all with infinite-scroll
+
+dto * with mapstruct
+
+// Set service options to all except few
+service all with serviceImpl
+
+/*travelensa end*/
