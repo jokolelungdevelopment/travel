@@ -1,0 +1,66 @@
+<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="myPreOrderLabel" jhiTranslate="travelApp.preOrder.home.createOrEditLabel">Create or edit a Pre Order</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                (click)="clear()">&times;</button>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" [hidden]="!preOrder.id">
+            <label for="id" jhiTranslate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                   [(ngModel)]="preOrder.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="travelApp.preOrder.orderDate" for="field_orderDate">Order Date</label>
+            <div class="d-flex">
+                <input id="field_orderDate" type="datetime-local" class="form-control" name="orderDate" [(ngModel)]="preOrder.orderDate"
+                />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="travelApp.preOrder.status" for="field_status">Status</label>
+            <select class="form-control" name="status" [(ngModel)]="preOrder.status" id="field_status" >
+                <option value="OPEN">{{'travelApp.Status.OPEN' | translate}}</option>
+                <option value="REQUSTED">{{'travelApp.Status.REQUSTED' | translate}}</option>
+                <option value="OFFERED">{{'travelApp.Status.OFFERED' | translate}}</option>
+                <option value="ACCEPTED">{{'travelApp.Status.ACCEPTED' | translate}}</option>
+                <option value="PAID">{{'travelApp.Status.PAID' | translate}}</option>
+                <option value="COMPLETED">{{'travelApp.Status.COMPLETED' | translate}}</option>
+                <option value="CLOSE">{{'travelApp.Status.CLOSE' | translate}}</option>
+                <option value="COMPLAINED">{{'travelApp.Status.COMPLAINED' | translate}}</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="travelApp.preOrder.user" for="field_user">User</label>
+            <select class="form-control" id="field_user" name="user" [(ngModel)]="preOrder.userId" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="userOption.id" *ngFor="let userOption of users; trackBy: trackUserById">{{userOption.id}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="travelApp.preOrder.product" for="field_product">Product</label>
+            <select class="form-control" id="field_product" name="product" [(ngModel)]="preOrder.productId" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="productOption.id" *ngFor="let productOption of products; trackBy: trackProductById">{{productOption.id}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="travelApp.preOrder.trip" for="field_trip">Trip</label>
+            <select class="form-control" id="field_trip" name="trip" [(ngModel)]="preOrder.tripId" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="tripOption.id" *ngFor="let tripOption of trips; trackBy: trackTripById">{{tripOption.id}}</option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">
+            <span class="fa fa-ban"></span>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

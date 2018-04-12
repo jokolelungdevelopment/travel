@@ -1,0 +1,48 @@
+
+<div *ngIf="transaction">
+    <h2><span jhiTranslate="travelApp.transaction.detail.title">Transaction</span> {{transaction.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="travelApp.transaction.requestid">Requestid</span></dt>
+        <dd>
+            <span>{{transaction.requestid}}</span>
+        </dd>
+        <dt><span jhiTranslate="travelApp.transaction.preorderid">Preorderid</span></dt>
+        <dd>
+            <span>{{transaction.preorderid}}</span>
+        </dd>
+        <dt><span jhiTranslate="travelApp.transaction.deliveryto">Deliveryto</span></dt>
+        <dd>
+            <span>{{transaction.deliveryto}}</span>
+        </dd>
+        <dt><span jhiTranslate="travelApp.transaction.qty">Qty</span></dt>
+        <dd>
+            <span>{{transaction.qty}}</span>
+        </dd>
+        <dt><span jhiTranslate="travelApp.transaction.price">Price</span></dt>
+        <dd>
+            <span>{{transaction.price}}</span>
+        </dd>
+        <dt><span jhiTranslate="travelApp.transaction.currency">Currency</span></dt>
+        <dd>
+            <div *ngIf="transaction.currencyId">
+                <a [routerLink]="['/currency', transaction.currencyId]">{{transaction.currencyId}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'transaction/'+ transaction.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

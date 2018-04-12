@@ -1,0 +1,40 @@
+
+<div *ngIf="journey">
+    <h2><span jhiTranslate="travelApp.journey.detail.title">Journey</span> {{journey.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="travelApp.journey.trip">Trip</span></dt>
+        <dd>
+            <div *ngIf="journey.tripId">
+                <a [routerLink]="['/trip', journey.tripId]">{{journey.tripId}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="travelApp.journey.city">City</span></dt>
+        <dd>
+            <div *ngIf="journey.cityId">
+                <a [routerLink]="['/city', journey.cityId]">{{journey.cityId}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="travelApp.journey.country">Country</span></dt>
+        <dd>
+            <div *ngIf="journey.countryId">
+                <a [routerLink]="['/country', journey.countryId]">{{journey.countryId}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'journey/'+ journey.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

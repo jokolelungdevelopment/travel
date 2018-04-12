@@ -1,0 +1,27 @@
+
+{
+    "travelApp": {
+        "trip" : {
+            "home": {
+                "title": "Trips",
+                "createLabel": "Buat Trip baru",
+                "createOrEditLabel": "Buat atau edit Trip"
+            },
+            "created": "Trip dengan id {{ param }} telah dibuat",
+            "updated": "Trip dengan id {{ param }} telah diperbaharui",
+            "deleted": "Trip dengan id {{ param }} telah dihapus",
+            "delete": {
+                "question": "Apakah anda yakin ingin menghapus Trip {{ id }}?"
+            },
+            "detail": {
+                "title": "Trip"
+            },
+            "startDate": "Start Date",
+            "endDate": "End Date",
+            "journey": "Journey",
+            "offer": "Offer",
+            "preOrder": "Pre Order",
+            "user": "User"
+        }
+    }
+}

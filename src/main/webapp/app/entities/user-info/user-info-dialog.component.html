@@ -1,0 +1,74 @@
+<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="myUserInfoLabel" jhiTranslate="travelApp.userInfo.home.createOrEditLabel">Create or edit a User Info</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                (click)="clear()">&times;</button>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" [hidden]="!userInfo.id">
+            <label for="id" jhiTranslate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                   [(ngModel)]="userInfo.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="travelApp.userInfo.fullname" for="field_fullname">Fullname</label>
+            <input type="text" class="form-control" name="fullname" id="field_fullname"
+                [(ngModel)]="userInfo.fullname" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="travelApp.userInfo.birthdate" for="field_birthdate">Birthdate</label>
+            <input type="text" class="form-control" name="birthdate" id="field_birthdate"
+                [(ngModel)]="userInfo.birthdate" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="travelApp.userInfo.phoneNumber" for="field_phoneNumber">Phone Number</label>
+            <input type="text" class="form-control" name="phoneNumber" id="field_phoneNumber"
+                [(ngModel)]="userInfo.phoneNumber" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="travelApp.userInfo.status" for="field_status">Status</label>
+            <select class="form-control" name="status" [(ngModel)]="userInfo.status" id="field_status" >
+                <option value="NOT">{{'travelApp.StatusUser.NOT' | translate}}</option>
+                <option value="VERIFIED">{{'travelApp.StatusUser.VERIFIED' | translate}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="travelApp.userInfo.balance" for="field_balance">Balance</label>
+            <input type="number" class="form-control" name="balance" id="field_balance"
+                [(ngModel)]="userInfo.balance" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="travelApp.userInfo.imgurl" for="field_imgurl">Imgurl</label>
+            <input type="text" class="form-control" name="imgurl" id="field_imgurl"
+                [(ngModel)]="userInfo.imgurl" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="travelApp.userInfo.gmailToken" for="field_gmailToken">Gmail Token</label>
+            <textarea class="form-control" name="gmailToken" id="field_gmailToken"
+                [(ngModel)]="userInfo.gmailToken" ></textarea>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="travelApp.userInfo.facebookToken" for="field_facebookToken">Facebook Token</label>
+            <textarea class="form-control" name="facebookToken" id="field_facebookToken"
+                [(ngModel)]="userInfo.facebookToken" ></textarea>
+        </div>
+
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="travelApp.userInfo.user" for="field_user">User</label>
+            <select class="form-control" id="field_user" name="user" [(ngModel)]="userInfo.userId" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="userOption.id" *ngFor="let userOption of users; trackBy: trackUserById">{{userOption.id}}</option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">
+            <span class="fa fa-ban"></span>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

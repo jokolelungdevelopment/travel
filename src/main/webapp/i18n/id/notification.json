@@ -1,0 +1,25 @@
+
+{
+    "travelApp": {
+        "notification" : {
+            "home": {
+                "title": "Notifications",
+                "createLabel": "Buat Notification baru",
+                "createOrEditLabel": "Buat atau edit Notification"
+            },
+            "created": "Notification dengan id {{ param }} telah dibuat",
+            "updated": "Notification dengan id {{ param }} telah diperbaharui",
+            "deleted": "Notification dengan id {{ param }} telah dihapus",
+            "delete": {
+                "question": "Apakah anda yakin ingin menghapus Notification {{ id }}?"
+            },
+            "detail": {
+                "title": "Notification"
+            },
+            "text": "Text",
+            "notifDate": "Notif Date",
+            "user": "User",
+            "request": "Request"
+        }
+    }
+}

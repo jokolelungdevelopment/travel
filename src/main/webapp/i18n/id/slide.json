@@ -1,0 +1,23 @@
+
+{
+    "travelApp": {
+        "slide" : {
+            "home": {
+                "title": "Slides",
+                "createLabel": "Buat Slide baru",
+                "createOrEditLabel": "Buat atau edit Slide"
+            },
+            "created": "Slide dengan id {{ param }} telah dibuat",
+            "updated": "Slide dengan id {{ param }} telah diperbaharui",
+            "deleted": "Slide dengan id {{ param }} telah dihapus",
+            "delete": {
+                "question": "Apakah anda yakin ingin menghapus Slide {{ id }}?"
+            },
+            "detail": {
+                "title": "Slide"
+            },
+            "imgurl": "Imgurl",
+            "url": "Url"
+        }
+    }
+}

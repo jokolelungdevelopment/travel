@@ -1,0 +1,41 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "currency",
+            "otherEntityName": "currency",
+            "otherEntityField": "id"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "requestid",
+            "fieldType": "Long"
+        },
+        {
+            "fieldName": "preorderid",
+            "fieldType": "Long"
+        },
+        {
+            "fieldName": "deliveryto",
+            "fieldType": "byte[]",
+            "fieldTypeBlobContent": "text"
+        },
+        {
+            "fieldName": "qty",
+            "fieldType": "Long"
+        },
+        {
+            "fieldName": "price",
+            "fieldType": "Double"
+        }
+    ],
+    "changelogDate": "20180412064022",
+    "javadoc": "Transaction",
+    "entityTableName": "transaction",
+    "dto": "mapstruct",
+    "pagination": "infinite-scroll",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false
+}

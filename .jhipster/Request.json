@@ -1,0 +1,55 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "offer",
+            "otherEntityName": "offer",
+            "otherEntityRelationshipName": "request"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "notification",
+            "otherEntityName": "notification",
+            "otherEntityRelationshipName": "request"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "user",
+            "otherEntityName": "user",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "product",
+            "otherEntityName": "product",
+            "otherEntityField": "id"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "requestDate",
+            "fieldType": "Instant"
+        },
+        {
+            "fieldName": "viewed",
+            "fieldType": "Long"
+        },
+        {
+            "fieldName": "status",
+            "fieldType": "Status",
+            "fieldValues": "OPEN,REQUSTED,OFFERED,ACCEPTED,PAID,COMPLETED,CLOSE,COMPLAINED"
+        },
+        {
+            "fieldName": "travelerid",
+            "fieldType": "Long"
+        }
+    ],
+    "changelogDate": "20180412064020",
+    "javadoc": "Request",
+    "entityTableName": "request",
+    "dto": "mapstruct",
+    "pagination": "infinite-scroll",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false
+}

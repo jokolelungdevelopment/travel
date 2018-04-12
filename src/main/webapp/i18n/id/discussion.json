@@ -1,0 +1,26 @@
+
+{
+    "travelApp": {
+        "discussion" : {
+            "home": {
+                "title": "Discussions",
+                "createLabel": "Buat Discussion baru",
+                "createOrEditLabel": "Buat atau edit Discussion"
+            },
+            "created": "Discussion dengan id {{ param }} telah dibuat",
+            "updated": "Discussion dengan id {{ param }} telah diperbaharui",
+            "deleted": "Discussion dengan id {{ param }} telah dihapus",
+            "delete": {
+                "question": "Apakah anda yakin ingin menghapus Discussion {{ id }}?"
+            },
+            "detail": {
+                "title": "Discussion"
+            },
+            "text": "Text",
+            "postDate": "Post Date",
+            "requestid": "Requestid",
+            "preorderid": "Preorderid",
+            "user": "User"
+        }
+    }
+}

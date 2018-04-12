@@ -1,0 +1,30 @@
+
+{
+    "travelApp": {
+        "userInfo" : {
+            "home": {
+                "title": "User Infos",
+                "createLabel": "Buat User Info baru",
+                "createOrEditLabel": "Buat atau edit User Info"
+            },
+            "created": "User Info dengan id {{ param }} telah dibuat",
+            "updated": "User Info dengan id {{ param }} telah diperbaharui",
+            "deleted": "User Info dengan id {{ param }} telah dihapus",
+            "delete": {
+                "question": "Apakah anda yakin ingin menghapus User Info {{ id }}?"
+            },
+            "detail": {
+                "title": "User Info"
+            },
+            "fullname": "Fullname",
+            "birthdate": "Birthdate",
+            "phoneNumber": "Phone Number",
+            "status": "Status",
+            "balance": "Balance",
+            "imgurl": "Imgurl",
+            "gmailToken": "Gmail Token",
+            "facebookToken": "Facebook Token",
+            "user": "User"
+        }
+    }
+}

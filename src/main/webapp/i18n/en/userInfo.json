@@ -1,0 +1,30 @@
+
+{
+    "travelApp": {
+        "userInfo" : {
+            "home": {
+                "title": "User Infos",
+                "createLabel": "Create a new User Info",
+                "createOrEditLabel": "Create or edit a User Info"
+            },
+            "created": "A new User Info is created with identifier {{ param }}",
+            "updated": "A User Info is updated with identifier {{ param }}",
+            "deleted": "A User Info is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete User Info {{ id }}?"
+            },
+            "detail": {
+                "title": "User Info"
+            },
+            "fullname": "Fullname",
+            "birthdate": "Birthdate",
+            "phoneNumber": "Phone Number",
+            "status": "Status",
+            "balance": "Balance",
+            "imgurl": "Imgurl",
+            "gmailToken": "Gmail Token",
+            "facebookToken": "Facebook Token",
+            "user": "User"
+        }
+    }
+}

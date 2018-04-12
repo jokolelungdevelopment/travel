@@ -1,0 +1,9 @@
+{
+    "travelApp": {
+        "StatusUser" : {
+            "null": "",
+            "NOT": "NOT",
+            "VERIFIED": "VERIFIED"
+        }
+    }
+}

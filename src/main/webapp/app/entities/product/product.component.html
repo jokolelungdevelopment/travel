@@ -1,0 +1,110 @@
+<div>
+    <h2>
+        <span jhiTranslate="travelApp.product.home.title">Products</span>
+        <button class="btn btn-primary float-right jh-create-entity create-product" [routerLink]="['/', { outlets: { popup: ['product-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span  jhiTranslate="travelApp.product.home.createLabel">
+            Create new Product
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="products">
+        <table class="table table-striped">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="reset.bind(this)">
+            <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="productname"><span jhiTranslate="travelApp.product.productname">Productname</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="description"><span jhiTranslate="travelApp.product.description">Description</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="brand"><span jhiTranslate="travelApp.product.brand">Brand</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="url"><span jhiTranslate="travelApp.product.url">Url</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="quantity"><span jhiTranslate="travelApp.product.quantity">Quantity</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="spesialtreatment"><span jhiTranslate="travelApp.product.spesialtreatment">Spesialtreatment</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="fragile"><span jhiTranslate="travelApp.product.fragile">Fragile</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="productweight"><span jhiTranslate="travelApp.product.productweight">Productweight</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="productsize"><span jhiTranslate="travelApp.product.productsize">Productsize</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="productprice"><span jhiTranslate="travelApp.product.productprice">Productprice</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="pruducttip"><span jhiTranslate="travelApp.product.pruducttip">Pruducttip</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="additionalcharge"><span jhiTranslate="travelApp.product.additionalcharge">Additionalcharge</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="total"><span jhiTranslate="travelApp.product.total">Total</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="userId"><span jhiTranslate="travelApp.product.user">User</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="categoryId"><span jhiTranslate="travelApp.product.category">Category</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="cityId"><span jhiTranslate="travelApp.product.city">City</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="countryId"><span jhiTranslate="travelApp.product.country">Country</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="currencyId"><span jhiTranslate="travelApp.product.currency">Currency</span> <span class="fa fa-sort"></span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody infinite-scroll (scrolled)="loadPage(page + 1)" [infiniteScrollDisabled]="page >= links['last']" [infiniteScrollDistance]="0">
+            <tr *ngFor="let product of products ;trackBy: trackId">
+                <td><a [routerLink]="['../product', product.id ]">{{product.id}}</a></td>
+                <td>{{product.productname}}</td>
+                <td>{{product.description}}</td>
+                <td>{{product.brand}}</td>
+                <td>{{product.url}}</td>
+                <td>{{product.quantity}}</td>
+                <td>{{product.spesialtreatment}}</td>
+                <td>{{product.fragile}}</td>
+                <td>{{product.productweight}}</td>
+                <td jhiTranslate="{{'travelApp.Size.' + product.productsize}}">{{product.productsize}}</td>
+                <td>{{product.productprice}}</td>
+                <td>{{product.pruducttip}}</td>
+                <td>{{product.additionalcharge}}</td>
+                <td>{{product.total}}</td>
+                <td>
+                    {{product.userId}}
+                </td>
+                <td>
+                    <div *ngIf="product.categoryId">
+                        <a [routerLink]="['../category', product.categoryId  ]" >{{product.categoryId}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="product.cityId">
+                        <a [routerLink]="['../city', product.cityId  ]" >{{product.cityId}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="product.countryId">
+                        <a [routerLink]="['../country', product.countryId  ]" >{{product.countryId}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="product.currencyId">
+                        <a [routerLink]="['../currency', product.currencyId  ]" >{{product.currencyId}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../product', product.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'product/'+ product.id + '/edit'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'product/'+ product.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

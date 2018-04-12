@@ -1,0 +1,29 @@
+
+{
+    "travelApp": {
+        "request" : {
+            "home": {
+                "title": "Requests",
+                "createLabel": "Buat Request baru",
+                "createOrEditLabel": "Buat atau edit Request"
+            },
+            "created": "Request dengan id {{ param }} telah dibuat",
+            "updated": "Request dengan id {{ param }} telah diperbaharui",
+            "deleted": "Request dengan id {{ param }} telah dihapus",
+            "delete": {
+                "question": "Apakah anda yakin ingin menghapus Request {{ id }}?"
+            },
+            "detail": {
+                "title": "Request"
+            },
+            "requestDate": "Request Date",
+            "viewed": "Viewed",
+            "status": "Status",
+            "travelerid": "Travelerid",
+            "offer": "Offer",
+            "notification": "Notification",
+            "user": "User",
+            "product": "Product"
+        }
+    }
+}

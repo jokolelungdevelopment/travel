@@ -1,0 +1,23 @@
+
+{
+    "travelApp": {
+        "productImage" : {
+            "home": {
+                "title": "Product Images",
+                "createLabel": "Buat Product Image baru",
+                "createOrEditLabel": "Buat atau edit Product Image"
+            },
+            "created": "Product Image dengan id {{ param }} telah dibuat",
+            "updated": "Product Image dengan id {{ param }} telah diperbaharui",
+            "deleted": "Product Image dengan id {{ param }} telah dihapus",
+            "delete": {
+                "question": "Apakah anda yakin ingin menghapus Product Image {{ id }}?"
+            },
+            "detail": {
+                "title": "Product Image"
+            },
+            "imgUrl": "Img Url",
+            "product": "Product"
+        }
+    }
+}

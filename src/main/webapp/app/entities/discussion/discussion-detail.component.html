@@ -1,0 +1,42 @@
+
+<div *ngIf="discussion">
+    <h2><span jhiTranslate="travelApp.discussion.detail.title">Discussion</span> {{discussion.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="travelApp.discussion.text">Text</span></dt>
+        <dd>
+            <span>{{discussion.text}}</span>
+        </dd>
+        <dt><span jhiTranslate="travelApp.discussion.postDate">Post Date</span></dt>
+        <dd>
+            <span>{{discussion.postDate | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="travelApp.discussion.requestid">Requestid</span></dt>
+        <dd>
+            <span>{{discussion.requestid}}</span>
+        </dd>
+        <dt><span jhiTranslate="travelApp.discussion.preorderid">Preorderid</span></dt>
+        <dd>
+            <span>{{discussion.preorderid}}</span>
+        </dd>
+        <dt><span jhiTranslate="travelApp.discussion.user">User</span></dt>
+        <dd>
+            {{discussion.userId}}
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'discussion/'+ discussion.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

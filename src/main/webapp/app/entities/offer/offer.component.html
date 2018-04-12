@@ -1,0 +1,80 @@
+<div>
+    <h2>
+        <span jhiTranslate="travelApp.offer.home.title">Offers</span>
+        <button class="btn btn-primary float-right jh-create-entity create-offer" [routerLink]="['/', { outlets: { popup: ['offer-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span  jhiTranslate="travelApp.offer.home.createLabel">
+            Create new Offer
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="offers">
+        <table class="table table-striped">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="reset.bind(this)">
+            <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="offerDate"><span jhiTranslate="travelApp.offer.offerDate">Offer Date</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="price"><span jhiTranslate="travelApp.offer.price">Price</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="note"><span jhiTranslate="travelApp.offer.note">Note</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="status"><span jhiTranslate="travelApp.offer.status">Status</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="userId"><span jhiTranslate="travelApp.offer.user">User</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="requestId"><span jhiTranslate="travelApp.offer.request">Request</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="tripId"><span jhiTranslate="travelApp.offer.trip">Trip</span> <span class="fa fa-sort"></span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody infinite-scroll (scrolled)="loadPage(page + 1)" [infiniteScrollDisabled]="page >= links['last']" [infiniteScrollDistance]="0">
+            <tr *ngFor="let offer of offers ;trackBy: trackId">
+                <td><a [routerLink]="['../offer', offer.id ]">{{offer.id}}</a></td>
+                <td>{{offer.offerDate | date:'medium'}}</td>
+                <td>{{offer.price}}</td>
+                <td>{{offer.note}}</td>
+                <td jhiTranslate="{{'travelApp.StatusOffer.' + offer.status}}">{{offer.status}}</td>
+                <td>
+                    {{offer.userId}}
+                </td>
+                <td>
+                    <div *ngIf="offer.requestId">
+                        <a [routerLink]="['../request', offer.requestId  ]" >{{offer.requestId}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="offer.tripId">
+                        <a [routerLink]="['../trip', offer.tripId  ]" >{{offer.tripId}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../offer', offer.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'offer/'+ offer.id + '/edit'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'offer/'+ offer.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

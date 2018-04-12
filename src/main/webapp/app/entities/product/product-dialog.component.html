@@ -1,0 +1,128 @@
+<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="myProductLabel" jhiTranslate="travelApp.product.home.createOrEditLabel">Create or edit a Product</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                (click)="clear()">&times;</button>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" [hidden]="!product.id">
+            <label for="id" jhiTranslate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                   [(ngModel)]="product.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="travelApp.product.productname" for="field_productname">Productname</label>
+            <input type="text" class="form-control" name="productname" id="field_productname"
+                [(ngModel)]="product.productname" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="travelApp.product.description" for="field_description">Description</label>
+            <textarea class="form-control" name="description" id="field_description"
+                [(ngModel)]="product.description" ></textarea>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="travelApp.product.brand" for="field_brand">Brand</label>
+            <input type="text" class="form-control" name="brand" id="field_brand"
+                [(ngModel)]="product.brand" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="travelApp.product.url" for="field_url">Url</label>
+            <input type="text" class="form-control" name="url" id="field_url"
+                [(ngModel)]="product.url" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="travelApp.product.quantity" for="field_quantity">Quantity</label>
+            <input type="text" class="form-control" name="quantity" id="field_quantity"
+                [(ngModel)]="product.quantity" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="travelApp.product.spesialtreatment" for="field_spesialtreatment">Spesialtreatment</label>
+            <input type="checkbox" class="form-control" name="spesialtreatment" id="field_spesialtreatment"
+                [(ngModel)]="product.spesialtreatment" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="travelApp.product.fragile" for="field_fragile">Fragile</label>
+            <input type="checkbox" class="form-control" name="fragile" id="field_fragile"
+                [(ngModel)]="product.fragile" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="travelApp.product.productweight" for="field_productweight">Productweight</label>
+            <input type="number" class="form-control" name="productweight" id="field_productweight"
+                [(ngModel)]="product.productweight" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="travelApp.product.productsize" for="field_productsize">Productsize</label>
+            <select class="form-control" name="productsize" [(ngModel)]="product.productsize" id="field_productsize" >
+                <option value="SMALL">{{'travelApp.Size.SMALL' | translate}}</option>
+                <option value="MEDIUM">{{'travelApp.Size.MEDIUM' | translate}}</option>
+                <option value="BIG">{{'travelApp.Size.BIG' | translate}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="travelApp.product.productprice" for="field_productprice">Productprice</label>
+            <input type="number" class="form-control" name="productprice" id="field_productprice"
+                [(ngModel)]="product.productprice" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="travelApp.product.pruducttip" for="field_pruducttip">Pruducttip</label>
+            <input type="number" class="form-control" name="pruducttip" id="field_pruducttip"
+                [(ngModel)]="product.pruducttip" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="travelApp.product.additionalcharge" for="field_additionalcharge">Additionalcharge</label>
+            <input type="number" class="form-control" name="additionalcharge" id="field_additionalcharge"
+                [(ngModel)]="product.additionalcharge" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="travelApp.product.total" for="field_total">Total</label>
+            <input type="number" class="form-control" name="total" id="field_total"
+                [(ngModel)]="product.total" />
+        </div>
+
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="travelApp.product.user" for="field_user">User</label>
+            <select class="form-control" id="field_user" name="user" [(ngModel)]="product.userId" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="userOption.id" *ngFor="let userOption of users; trackBy: trackUserById">{{userOption.id}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="travelApp.product.category" for="field_category">Category</label>
+            <select class="form-control" id="field_category" name="category" [(ngModel)]="product.categoryId" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="categoryOption.id" *ngFor="let categoryOption of categories; trackBy: trackCategoryById">{{categoryOption.id}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="travelApp.product.city" for="field_city">City</label>
+            <select class="form-control" id="field_city" name="city" [(ngModel)]="product.cityId" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="cityOption.id" *ngFor="let cityOption of cities; trackBy: trackCityById">{{cityOption.id}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="travelApp.product.country" for="field_country">Country</label>
+            <select class="form-control" id="field_country" name="country" [(ngModel)]="product.countryId" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="countryOption.id" *ngFor="let countryOption of countries; trackBy: trackCountryById">{{countryOption.id}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="travelApp.product.currency" for="field_currency">Currency</label>
+            <select class="form-control" id="field_currency" name="currency" [(ngModel)]="product.currencyId" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="currencyOption.id" *ngFor="let currencyOption of currencies; trackBy: trackCurrencyById">{{currencyOption.id}}</option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">
+            <span class="fa fa-ban"></span>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

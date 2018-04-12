@@ -1,0 +1,15 @@
+{
+    "travelApp": {
+        "Status" : {
+            "null": "",
+            "OPEN": "OPEN",
+            "REQUSTED": "REQUSTED",
+            "OFFERED": "OFFERED",
+            "ACCEPTED": "ACCEPTED",
+            "PAID": "PAID",
+            "COMPLETED": "COMPLETED",
+            "CLOSE": "CLOSE",
+            "COMPLAINED": "COMPLAINED"
+        }
+    }
+}

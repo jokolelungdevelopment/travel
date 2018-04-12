@@ -1,0 +1,10 @@
+{
+    "travelApp": {
+        "Size" : {
+            "null": "",
+            "SMALL": "SMALL",
+            "MEDIUM": "MEDIUM",
+            "BIG": "BIG"
+        }
+    }
+}

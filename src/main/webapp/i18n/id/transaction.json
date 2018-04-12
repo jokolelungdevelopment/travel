@@ -1,0 +1,27 @@
+
+{
+    "travelApp": {
+        "transaction" : {
+            "home": {
+                "title": "Transactions",
+                "createLabel": "Buat Transaction baru",
+                "createOrEditLabel": "Buat atau edit Transaction"
+            },
+            "created": "Transaction dengan id {{ param }} telah dibuat",
+            "updated": "Transaction dengan id {{ param }} telah diperbaharui",
+            "deleted": "Transaction dengan id {{ param }} telah dihapus",
+            "delete": {
+                "question": "Apakah anda yakin ingin menghapus Transaction {{ id }}?"
+            },
+            "detail": {
+                "title": "Transaction"
+            },
+            "requestid": "Requestid",
+            "preorderid": "Preorderid",
+            "deliveryto": "Deliveryto",
+            "qty": "Qty",
+            "price": "Price",
+            "currency": "Currency"
+        }
+    }
+}

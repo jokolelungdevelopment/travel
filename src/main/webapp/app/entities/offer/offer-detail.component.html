@@ -1,0 +1,54 @@
+
+<div *ngIf="offer">
+    <h2><span jhiTranslate="travelApp.offer.detail.title">Offer</span> {{offer.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="travelApp.offer.offerDate">Offer Date</span></dt>
+        <dd>
+            <span>{{offer.offerDate | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="travelApp.offer.price">Price</span></dt>
+        <dd>
+            <span>{{offer.price}}</span>
+        </dd>
+        <dt><span jhiTranslate="travelApp.offer.note">Note</span></dt>
+        <dd>
+            <span>{{offer.note}}</span>
+        </dd>
+        <dt><span jhiTranslate="travelApp.offer.status">Status</span></dt>
+        <dd>
+            <span jhiTranslate="{{'travelApp.StatusOffer.' + offer.status}}">{{offer.status}}</span>
+        </dd>
+        <dt><span jhiTranslate="travelApp.offer.user">User</span></dt>
+        <dd>
+            {{offer.userId}}
+        </dd>
+        <dt><span jhiTranslate="travelApp.offer.request">Request</span></dt>
+        <dd>
+            <div *ngIf="offer.requestId">
+                <a [routerLink]="['/request', offer.requestId]">{{offer.requestId}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="travelApp.offer.trip">Trip</span></dt>
+        <dd>
+            <div *ngIf="offer.tripId">
+                <a [routerLink]="['/trip', offer.tripId]">{{offer.tripId}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'offer/'+ offer.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>
