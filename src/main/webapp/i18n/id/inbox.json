@@ -1,0 +1,26 @@
+
+{
+    "travelApp": {
+        "inbox" : {
+            "home": {
+                "title": "Inboxes",
+                "createLabel": "Buat Inbox baru",
+                "createOrEditLabel": "Buat atau edit Inbox"
+            },
+            "created": "Inbox dengan id {{ param }} telah dibuat",
+            "updated": "Inbox dengan id {{ param }} telah diperbaharui",
+            "deleted": "Inbox dengan id {{ param }} telah dihapus",
+            "delete": {
+                "question": "Apakah anda yakin ingin menghapus Inbox {{ id }}?"
+            },
+            "detail": {
+                "title": "Inbox"
+            },
+            "subject": "Subject",
+            "postDate": "Post Date",
+            "messages": "Messages",
+            "sender": "Sender",
+            "receiver": "Receiver"
+        }
+    }
+}

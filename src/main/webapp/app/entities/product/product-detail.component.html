@@ -1,0 +1,102 @@
+
+<div *ngIf="product">
+    <h2><span jhiTranslate="travelApp.product.detail.title">Product</span> {{product.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="travelApp.product.productname">Productname</span></dt>
+        <dd>
+            <span>{{product.productname}}</span>
+        </dd>
+        <dt><span jhiTranslate="travelApp.product.description">Description</span></dt>
+        <dd>
+            <span>{{product.description}}</span>
+        </dd>
+        <dt><span jhiTranslate="travelApp.product.brand">Brand</span></dt>
+        <dd>
+            <span>{{product.brand}}</span>
+        </dd>
+        <dt><span jhiTranslate="travelApp.product.url">Url</span></dt>
+        <dd>
+            <span>{{product.url}}</span>
+        </dd>
+        <dt><span jhiTranslate="travelApp.product.quantity">Quantity</span></dt>
+        <dd>
+            <span>{{product.quantity}}</span>
+        </dd>
+        <dt><span jhiTranslate="travelApp.product.spesialtreatment">Spesialtreatment</span></dt>
+        <dd>
+            <span>{{product.spesialtreatment}}</span>
+        </dd>
+        <dt><span jhiTranslate="travelApp.product.fragile">Fragile</span></dt>
+        <dd>
+            <span>{{product.fragile}}</span>
+        </dd>
+        <dt><span jhiTranslate="travelApp.product.productweight">Productweight</span></dt>
+        <dd>
+            <span>{{product.productweight}}</span>
+        </dd>
+        <dt><span jhiTranslate="travelApp.product.productsize">Productsize</span></dt>
+        <dd>
+            <span jhiTranslate="{{'travelApp.Size.' + product.productsize}}">{{product.productsize}}</span>
+        </dd>
+        <dt><span jhiTranslate="travelApp.product.productprice">Productprice</span></dt>
+        <dd>
+            <span>{{product.productprice}}</span>
+        </dd>
+        <dt><span jhiTranslate="travelApp.product.pruducttip">Pruducttip</span></dt>
+        <dd>
+            <span>{{product.pruducttip}}</span>
+        </dd>
+        <dt><span jhiTranslate="travelApp.product.additionalcharge">Additionalcharge</span></dt>
+        <dd>
+            <span>{{product.additionalcharge}}</span>
+        </dd>
+        <dt><span jhiTranslate="travelApp.product.total">Total</span></dt>
+        <dd>
+            <span>{{product.total}}</span>
+        </dd>
+        <dt><span jhiTranslate="travelApp.product.user">User</span></dt>
+        <dd>
+            {{product.userId}}
+        </dd>
+        <dt><span jhiTranslate="travelApp.product.category">Category</span></dt>
+        <dd>
+            <div *ngIf="product.categoryId">
+                <a [routerLink]="['/category', product.categoryId]">{{product.categoryId}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="travelApp.product.city">City</span></dt>
+        <dd>
+            <div *ngIf="product.cityId">
+                <a [routerLink]="['/city', product.cityId]">{{product.cityId}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="travelApp.product.country">Country</span></dt>
+        <dd>
+            <div *ngIf="product.countryId">
+                <a [routerLink]="['/country', product.countryId]">{{product.countryId}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="travelApp.product.currency">Currency</span></dt>
+        <dd>
+            <div *ngIf="product.currencyId">
+                <a [routerLink]="['/currency', product.currencyId]">{{product.currencyId}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'product/'+ product.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

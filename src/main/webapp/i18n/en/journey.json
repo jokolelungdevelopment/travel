@@ -1,0 +1,24 @@
+
+{
+    "travelApp": {
+        "journey" : {
+            "home": {
+                "title": "Journeys",
+                "createLabel": "Create a new Journey",
+                "createOrEditLabel": "Create or edit a Journey"
+            },
+            "created": "A new Journey is created with identifier {{ param }}",
+            "updated": "A Journey is updated with identifier {{ param }}",
+            "deleted": "A Journey is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Journey {{ id }}?"
+            },
+            "detail": {
+                "title": "Journey"
+            },
+            "trip": "Trip",
+            "city": "City",
+            "country": "Country"
+        }
+    }
+}

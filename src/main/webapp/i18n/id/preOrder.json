@@ -1,0 +1,26 @@
+
+{
+    "travelApp": {
+        "preOrder" : {
+            "home": {
+                "title": "Pre Orders",
+                "createLabel": "Buat Pre Order baru",
+                "createOrEditLabel": "Buat atau edit Pre Order"
+            },
+            "created": "Pre Order dengan id {{ param }} telah dibuat",
+            "updated": "Pre Order dengan id {{ param }} telah diperbaharui",
+            "deleted": "Pre Order dengan id {{ param }} telah dihapus",
+            "delete": {
+                "question": "Apakah anda yakin ingin menghapus Pre Order {{ id }}?"
+            },
+            "detail": {
+                "title": "Pre Order"
+            },
+            "orderDate": "Order Date",
+            "status": "Status",
+            "user": "User",
+            "product": "Product",
+            "trip": "Trip"
+        }
+    }
+}

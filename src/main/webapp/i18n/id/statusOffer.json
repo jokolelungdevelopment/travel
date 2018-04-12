@@ -1,0 +1,10 @@
+{
+    "travelApp": {
+        "StatusOffer" : {
+            "null": "",
+            "OFFERED": "OFFERED",
+            "CANCEL": "CANCEL",
+            "ACCEPTED": "ACCEPTED"
+        }
+    }
+}

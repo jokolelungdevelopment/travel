@@ -1,0 +1,34 @@
+
+<div *ngIf="favorite">
+    <h2><span jhiTranslate="travelApp.favorite.detail.title">Favorite</span> {{favorite.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="travelApp.favorite.requestid">Requestid</span></dt>
+        <dd>
+            <span>{{favorite.requestid}}</span>
+        </dd>
+        <dt><span jhiTranslate="travelApp.favorite.preorderid">Preorderid</span></dt>
+        <dd>
+            <span>{{favorite.preorderid}}</span>
+        </dd>
+        <dt><span jhiTranslate="travelApp.favorite.user">User</span></dt>
+        <dd>
+            {{favorite.userId}}
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'favorite/'+ favorite.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

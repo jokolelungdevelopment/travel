@@ -1,0 +1,51 @@
+<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="myNotificationLabel" jhiTranslate="travelApp.notification.home.createOrEditLabel">Create or edit a Notification</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                (click)="clear()">&times;</button>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" [hidden]="!notification.id">
+            <label for="id" jhiTranslate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                   [(ngModel)]="notification.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="travelApp.notification.text" for="field_text">Text</label>
+            <textarea class="form-control" name="text" id="field_text"
+                [(ngModel)]="notification.text" ></textarea>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="travelApp.notification.notifDate" for="field_notifDate">Notif Date</label>
+            <div class="d-flex">
+                <input id="field_notifDate" type="datetime-local" class="form-control" name="notifDate" [(ngModel)]="notification.notifDate"
+                />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="travelApp.notification.user" for="field_user">User</label>
+            <select class="form-control" id="field_user" name="user" [(ngModel)]="notification.userId" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="userOption.id" *ngFor="let userOption of users; trackBy: trackUserById">{{userOption.id}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="travelApp.notification.request" for="field_request">Request</label>
+            <select class="form-control" id="field_request" name="request" [(ngModel)]="notification.requestId" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="requestOption.id" *ngFor="let requestOption of requests; trackBy: trackRequestById">{{requestOption.id}}</option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">
+            <span class="fa fa-ban"></span>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

@@ -1,0 +1,76 @@
+<div>
+    <h2>
+        <span jhiTranslate="travelApp.preOrder.home.title">Pre Orders</span>
+        <button class="btn btn-primary float-right jh-create-entity create-pre-order" [routerLink]="['/', { outlets: { popup: ['pre-order-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span  jhiTranslate="travelApp.preOrder.home.createLabel">
+            Create new Pre Order
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="preOrders">
+        <table class="table table-striped">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="reset.bind(this)">
+            <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="orderDate"><span jhiTranslate="travelApp.preOrder.orderDate">Order Date</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="status"><span jhiTranslate="travelApp.preOrder.status">Status</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="userId"><span jhiTranslate="travelApp.preOrder.user">User</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="productId"><span jhiTranslate="travelApp.preOrder.product">Product</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="tripId"><span jhiTranslate="travelApp.preOrder.trip">Trip</span> <span class="fa fa-sort"></span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody infinite-scroll (scrolled)="loadPage(page + 1)" [infiniteScrollDisabled]="page >= links['last']" [infiniteScrollDistance]="0">
+            <tr *ngFor="let preOrder of preOrders ;trackBy: trackId">
+                <td><a [routerLink]="['../pre-order', preOrder.id ]">{{preOrder.id}}</a></td>
+                <td>{{preOrder.orderDate | date:'medium'}}</td>
+                <td jhiTranslate="{{'travelApp.Status.' + preOrder.status}}">{{preOrder.status}}</td>
+                <td>
+                    {{preOrder.userId}}
+                </td>
+                <td>
+                    <div *ngIf="preOrder.productId">
+                        <a [routerLink]="['../product', preOrder.productId  ]" >{{preOrder.productId}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="preOrder.tripId">
+                        <a [routerLink]="['../trip', preOrder.tripId  ]" >{{preOrder.tripId}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../pre-order', preOrder.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'pre-order/'+ preOrder.id + '/edit'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'pre-order/'+ preOrder.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

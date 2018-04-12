@@ -1,0 +1,26 @@
+
+{
+    "travelApp": {
+        "preOrder" : {
+            "home": {
+                "title": "Pre Orders",
+                "createLabel": "Create a new Pre Order",
+                "createOrEditLabel": "Create or edit a Pre Order"
+            },
+            "created": "A new Pre Order is created with identifier {{ param }}",
+            "updated": "A Pre Order is updated with identifier {{ param }}",
+            "deleted": "A Pre Order is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Pre Order {{ id }}?"
+            },
+            "detail": {
+                "title": "Pre Order"
+            },
+            "orderDate": "Order Date",
+            "status": "Status",
+            "user": "User",
+            "product": "Product",
+            "trip": "Trip"
+        }
+    }
+}

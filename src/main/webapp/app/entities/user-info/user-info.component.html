@@ -1,0 +1,76 @@
+<div>
+    <h2>
+        <span jhiTranslate="travelApp.userInfo.home.title">User Infos</span>
+        <button class="btn btn-primary float-right jh-create-entity create-user-info" [routerLink]="['/', { outlets: { popup: ['user-info-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span  jhiTranslate="travelApp.userInfo.home.createLabel">
+            Create new User Info
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="userInfos">
+        <table class="table table-striped">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="reset.bind(this)">
+            <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="fullname"><span jhiTranslate="travelApp.userInfo.fullname">Fullname</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="birthdate"><span jhiTranslate="travelApp.userInfo.birthdate">Birthdate</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="phoneNumber"><span jhiTranslate="travelApp.userInfo.phoneNumber">Phone Number</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="status"><span jhiTranslate="travelApp.userInfo.status">Status</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="balance"><span jhiTranslate="travelApp.userInfo.balance">Balance</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="imgurl"><span jhiTranslate="travelApp.userInfo.imgurl">Imgurl</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="gmailToken"><span jhiTranslate="travelApp.userInfo.gmailToken">Gmail Token</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="facebookToken"><span jhiTranslate="travelApp.userInfo.facebookToken">Facebook Token</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="userId"><span jhiTranslate="travelApp.userInfo.user">User</span> <span class="fa fa-sort"></span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody infinite-scroll (scrolled)="loadPage(page + 1)" [infiniteScrollDisabled]="page >= links['last']" [infiniteScrollDistance]="0">
+            <tr *ngFor="let userInfo of userInfos ;trackBy: trackId">
+                <td><a [routerLink]="['../user-info', userInfo.id ]">{{userInfo.id}}</a></td>
+                <td>{{userInfo.fullname}}</td>
+                <td>{{userInfo.birthdate}}</td>
+                <td>{{userInfo.phoneNumber}}</td>
+                <td jhiTranslate="{{'travelApp.StatusUser.' + userInfo.status}}">{{userInfo.status}}</td>
+                <td>{{userInfo.balance}}</td>
+                <td>{{userInfo.imgurl}}</td>
+                <td>{{userInfo.gmailToken}}</td>
+                <td>{{userInfo.facebookToken}}</td>
+                <td>
+                    {{userInfo.userId}}
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../user-info', userInfo.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'user-info/'+ userInfo.id + '/edit'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'user-info/'+ userInfo.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

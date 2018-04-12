@@ -1,0 +1,48 @@
+
+<div *ngIf="request">
+    <h2><span jhiTranslate="travelApp.request.detail.title">Request</span> {{request.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="travelApp.request.requestDate">Request Date</span></dt>
+        <dd>
+            <span>{{request.requestDate | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="travelApp.request.viewed">Viewed</span></dt>
+        <dd>
+            <span>{{request.viewed}}</span>
+        </dd>
+        <dt><span jhiTranslate="travelApp.request.status">Status</span></dt>
+        <dd>
+            <span jhiTranslate="{{'travelApp.Status.' + request.status}}">{{request.status}}</span>
+        </dd>
+        <dt><span jhiTranslate="travelApp.request.travelerid">Travelerid</span></dt>
+        <dd>
+            <span>{{request.travelerid}}</span>
+        </dd>
+        <dt><span jhiTranslate="travelApp.request.user">User</span></dt>
+        <dd>
+            {{request.userId}}
+        </dd>
+        <dt><span jhiTranslate="travelApp.request.product">Product</span></dt>
+        <dd>
+            <div *ngIf="request.productId">
+                <a [routerLink]="['/product', request.productId]">{{request.productId}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'request/'+ request.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

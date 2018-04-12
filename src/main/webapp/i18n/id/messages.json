@@ -1,0 +1,25 @@
+
+{
+    "travelApp": {
+        "messages" : {
+            "home": {
+                "title": "Messages",
+                "createLabel": "Buat Messages baru",
+                "createOrEditLabel": "Buat atau edit Messages"
+            },
+            "created": "Messages dengan id {{ param }} telah dibuat",
+            "updated": "Messages dengan id {{ param }} telah diperbaharui",
+            "deleted": "Messages dengan id {{ param }} telah dihapus",
+            "delete": {
+                "question": "Apakah anda yakin ingin menghapus Messages {{ id }}?"
+            },
+            "detail": {
+                "title": "Messages"
+            },
+            "text": "Text",
+            "postDate": "Post Date",
+            "user": "User",
+            "inbox": "Inbox"
+        }
+    }
+}

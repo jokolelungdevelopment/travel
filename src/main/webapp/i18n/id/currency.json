@@ -1,0 +1,25 @@
+
+{
+    "travelApp": {
+        "currency" : {
+            "home": {
+                "title": "Currencies",
+                "createLabel": "Buat Currency baru",
+                "createOrEditLabel": "Buat atau edit Currency"
+            },
+            "created": "Currency dengan id {{ param }} telah dibuat",
+            "updated": "Currency dengan id {{ param }} telah diperbaharui",
+            "deleted": "Currency dengan id {{ param }} telah dihapus",
+            "delete": {
+                "question": "Apakah anda yakin ingin menghapus Currency {{ id }}?"
+            },
+            "detail": {
+                "title": "Currency"
+            },
+            "name": "Name",
+            "value": "Value",
+            "product": "Product",
+            "transaction": "Transaction"
+        }
+    }
+}

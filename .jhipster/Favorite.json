@@ -1,0 +1,28 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "user",
+            "otherEntityName": "user",
+            "otherEntityField": "id"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "requestid",
+            "fieldType": "Long"
+        },
+        {
+            "fieldName": "preorderid",
+            "fieldType": "Long"
+        }
+    ],
+    "changelogDate": "20180412064027",
+    "javadoc": "Favorite",
+    "entityTableName": "favorite",
+    "dto": "mapstruct",
+    "pagination": "infinite-scroll",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false
+}

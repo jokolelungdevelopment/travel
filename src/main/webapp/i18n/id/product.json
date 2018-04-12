@@ -1,0 +1,42 @@
+
+{
+    "travelApp": {
+        "product" : {
+            "home": {
+                "title": "Products",
+                "createLabel": "Buat Product baru",
+                "createOrEditLabel": "Buat atau edit Product"
+            },
+            "created": "Product dengan id {{ param }} telah dibuat",
+            "updated": "Product dengan id {{ param }} telah diperbaharui",
+            "deleted": "Product dengan id {{ param }} telah dihapus",
+            "delete": {
+                "question": "Apakah anda yakin ingin menghapus Product {{ id }}?"
+            },
+            "detail": {
+                "title": "Product"
+            },
+            "productname": "Productname",
+            "description": "Description",
+            "brand": "Brand",
+            "url": "Url",
+            "quantity": "Quantity",
+            "spesialtreatment": "Spesialtreatment",
+            "fragile": "Fragile",
+            "productweight": "Productweight",
+            "productsize": "Productsize",
+            "productprice": "Productprice",
+            "pruducttip": "Pruducttip",
+            "additionalcharge": "Additionalcharge",
+            "total": "Total",
+            "productImage": "Product Image",
+            "request": "Request",
+            "preOrder": "Pre Order",
+            "user": "User",
+            "category": "Category",
+            "city": "City",
+            "country": "Country",
+            "currency": "Currency"
+        }
+    }
+}

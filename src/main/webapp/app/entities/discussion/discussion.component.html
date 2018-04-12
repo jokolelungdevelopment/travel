@@ -1,0 +1,68 @@
+<div>
+    <h2>
+        <span jhiTranslate="travelApp.discussion.home.title">Discussions</span>
+        <button class="btn btn-primary float-right jh-create-entity create-discussion" [routerLink]="['/', { outlets: { popup: ['discussion-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span  jhiTranslate="travelApp.discussion.home.createLabel">
+            Create new Discussion
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="discussions">
+        <table class="table table-striped">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="reset.bind(this)">
+            <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="text"><span jhiTranslate="travelApp.discussion.text">Text</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="postDate"><span jhiTranslate="travelApp.discussion.postDate">Post Date</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="requestid"><span jhiTranslate="travelApp.discussion.requestid">Requestid</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="preorderid"><span jhiTranslate="travelApp.discussion.preorderid">Preorderid</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="userId"><span jhiTranslate="travelApp.discussion.user">User</span> <span class="fa fa-sort"></span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody infinite-scroll (scrolled)="loadPage(page + 1)" [infiniteScrollDisabled]="page >= links['last']" [infiniteScrollDistance]="0">
+            <tr *ngFor="let discussion of discussions ;trackBy: trackId">
+                <td><a [routerLink]="['../discussion', discussion.id ]">{{discussion.id}}</a></td>
+                <td>{{discussion.text}}</td>
+                <td>{{discussion.postDate | date:'medium'}}</td>
+                <td>{{discussion.requestid}}</td>
+                <td>{{discussion.preorderid}}</td>
+                <td>
+                    {{discussion.userId}}
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../discussion', discussion.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'discussion/'+ discussion.id + '/edit'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'discussion/'+ discussion.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

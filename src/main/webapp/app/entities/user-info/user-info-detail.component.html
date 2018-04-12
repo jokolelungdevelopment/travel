@@ -1,0 +1,58 @@
+
+<div *ngIf="userInfo">
+    <h2><span jhiTranslate="travelApp.userInfo.detail.title">User Info</span> {{userInfo.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="travelApp.userInfo.fullname">Fullname</span></dt>
+        <dd>
+            <span>{{userInfo.fullname}}</span>
+        </dd>
+        <dt><span jhiTranslate="travelApp.userInfo.birthdate">Birthdate</span></dt>
+        <dd>
+            <span>{{userInfo.birthdate}}</span>
+        </dd>
+        <dt><span jhiTranslate="travelApp.userInfo.phoneNumber">Phone Number</span></dt>
+        <dd>
+            <span>{{userInfo.phoneNumber}}</span>
+        </dd>
+        <dt><span jhiTranslate="travelApp.userInfo.status">Status</span></dt>
+        <dd>
+            <span jhiTranslate="{{'travelApp.StatusUser.' + userInfo.status}}">{{userInfo.status}}</span>
+        </dd>
+        <dt><span jhiTranslate="travelApp.userInfo.balance">Balance</span></dt>
+        <dd>
+            <span>{{userInfo.balance}}</span>
+        </dd>
+        <dt><span jhiTranslate="travelApp.userInfo.imgurl">Imgurl</span></dt>
+        <dd>
+            <span>{{userInfo.imgurl}}</span>
+        </dd>
+        <dt><span jhiTranslate="travelApp.userInfo.gmailToken">Gmail Token</span></dt>
+        <dd>
+            <span>{{userInfo.gmailToken}}</span>
+        </dd>
+        <dt><span jhiTranslate="travelApp.userInfo.facebookToken">Facebook Token</span></dt>
+        <dd>
+            <span>{{userInfo.facebookToken}}</span>
+        </dd>
+        <dt><span jhiTranslate="travelApp.userInfo.user">User</span></dt>
+        <dd>
+            {{userInfo.userId}}
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'user-info/'+ userInfo.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

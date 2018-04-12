@@ -1,0 +1,38 @@
+
+<div *ngIf="inbox">
+    <h2><span jhiTranslate="travelApp.inbox.detail.title">Inbox</span> {{inbox.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="travelApp.inbox.subject">Subject</span></dt>
+        <dd>
+            <span>{{inbox.subject}}</span>
+        </dd>
+        <dt><span jhiTranslate="travelApp.inbox.postDate">Post Date</span></dt>
+        <dd>
+            <span>{{inbox.postDate | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="travelApp.inbox.sender">Sender</span></dt>
+        <dd>
+            {{inbox.senderId}}
+        </dd>
+        <dt><span jhiTranslate="travelApp.inbox.receiver">Receiver</span></dt>
+        <dd>
+            {{inbox.receiverId}}
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'inbox/'+ inbox.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>
